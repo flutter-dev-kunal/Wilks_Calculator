@@ -1,5 +1,5 @@
 # 1.
-name: Test & Build
+name: "Test & Build"
 
 # 2.
 on:
@@ -44,4 +44,4 @@ jobs:
       # 9.
       - name: Build APK
         run: |
-          flutter build apk --release
+          flutter build apk --release --split-per-abi
