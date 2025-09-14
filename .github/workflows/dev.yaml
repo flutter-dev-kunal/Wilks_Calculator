@@ -34,7 +34,7 @@ jobs:
         uses: subosito/flutter-action@v2
         with:
           channel: 'stable'
-          flutter-version: '3.27.0'
+          architecture: x64
 
       # 8.
       - name: Get Flutter packages
@@ -45,3 +45,10 @@ jobs:
       - name: Build APK
         run: |
           flutter build apk --release --split-per-abi
+
+      # 10
+      - name: Push to Releases
+        uses: ncipollo/release-action@v1
+        with:
+          tag: v1.0.${{ github.run_number }}
+          token: ${{ secrets.TOKEN }}
