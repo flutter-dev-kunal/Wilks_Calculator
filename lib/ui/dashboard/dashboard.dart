@@ -46,6 +46,15 @@ class _WilksCalculatorScreenState extends State<WilksCalculatorScreen> {
     });
   }
 
+  double _calculateLiftProgress() {
+    final bodyWeight = double.tryParse(_bodyWeightController.text);
+    final liftedWeight = double.tryParse(_liftedWeightController.text);
+
+    final liftedWeightByBodyWeight = (liftedWeight! / bodyWeight!).toStringAsFixed(2);
+
+    return double.parse(liftedWeightByBodyWeight);
+  }
+
   double calculateWilks({
     required double bodyWeightKg,
     required double totalLiftKg,
@@ -199,6 +208,23 @@ class _WilksCalculatorScreenState extends State<WilksCalculatorScreen> {
                   color: bgColor,
                   fontSize: 22,
                   fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            // Lift x body weight
+            Padding(
+              padding: const EdgeInsets.only(top: 15),
+              child: Center(
+                child: Text(
+                  textAlign: TextAlign.center,
+                  _wilksScore != null
+                      ? 'You lift: ${_calculateLiftProgress()} x your body weight'
+                      : '',
+                  style: GoogleFonts.poppins(
+                    color: bgColor,
+                    fontSize: 18,
+                    fontWeight: FontWeight.w500,
+                  ),
                 ),
               ),
             ),
