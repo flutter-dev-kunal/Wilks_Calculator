@@ -36,14 +36,18 @@ jobs:
           cache: true
 
       # 8.
+      - name: Print Flutter version
+        run: flutter --version
+
+      # 9.
       - name: Get Flutter packages
         run: flutter pub get
 
-      # 9.
+      # 10.
       - name: Build APK
         run: flutter build apk
 
-      # 10
+      # 11.
       - name: Push to Releases
         uses: ncipollo/release-action@v1
         with:
